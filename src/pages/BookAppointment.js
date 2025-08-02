@@ -1,9 +1,10 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAppointment } from '../context/AppointmentContext';
 import AppointmentForm from '../components/AppointmentForm';
 import '../styles/BookAppointment.css';
+
+const BACKEND_URL = "https://healthcare-backend-1-jcvq.onrender.com";
 
 function BookAppointment() {
   const { id } = useParams();
@@ -19,13 +20,16 @@ function BookAppointment() {
 
   const fetchDoctor = async () => {
     try {
-      const response = await fetch(`/api/doctors/${id}`);
+      const response = await fetch(`${BACKEND_URL}/api/doctors/${id}`, {
+        method: 'GET',
+        credentials: 'include' // ✅ important for auth cookies
+      });
       const data = await response.json();
-      
+
       if (response.ok) {
         setDoctor(data.data);
       } else {
-        throw new Error(data.message || 'Failed to fetch doctor');
+        throw new Error(data.error || 'Failed to fetch doctor');
       }
     } catch (err) {
       setError(err.message);
@@ -35,8 +39,9 @@ function BookAppointment() {
   const handleBookingSubmit = async (appointmentData) => {
     setLoading(true);
     try {
-      const response = await fetch('/api/appointments', {
+      const response = await fetch(`${BACKEND_URL}/api/appointments`, {
         method: 'POST',
+        credentials: 'include', // ✅ send cookie
         headers: {
           'Content-Type': 'application/json',
         },
