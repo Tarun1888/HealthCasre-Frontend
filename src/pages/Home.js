@@ -19,8 +19,8 @@ function Home() {
 
   const navigate = useNavigate();
 
-  // ✅ get backend URL from env
-  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+  // ✅ Use backend URL from env
+  const BACKEND_URL = "https://healthcare-backend-1-jcvq.onrender.com";
 
   useEffect(() => {
     fetchDoctors();
