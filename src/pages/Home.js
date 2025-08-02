@@ -19,16 +19,20 @@ function Home() {
 
   const navigate = useNavigate();
 
+  // ✅ get backend URL from env
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
   useEffect(() => {
     fetchDoctors();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchDoctors = async (search = '') => {
     setLoading(true);
     try {
       const url = search
-        ? `/api/doctors?search=${encodeURIComponent(search)}`
-        : '/api/doctors';
+        ? `${BACKEND_URL}/api/doctors?search=${encodeURIComponent(search)}`
+        : `${BACKEND_URL}/api/doctors`;
 
       const res = await fetch(url, {
         method: 'GET',
@@ -59,7 +63,7 @@ function Home() {
 
   const handleLogout = async () => {
     try {
-      await fetch('/api/logout', {
+      await fetch(`${BACKEND_URL}/api/logout`, {
         method: 'POST',
         credentials: 'include',
       });
