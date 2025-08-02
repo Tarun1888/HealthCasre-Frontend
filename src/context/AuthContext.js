@@ -52,7 +52,7 @@ function authReducer(state, action) {
 export function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  // Check for existing token on app load
+  
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -157,7 +157,7 @@ export function AuthProvider({ children }) {
     dispatch({ type: 'CLEAR_ERROR' });
   };
 
-  // Function to get auth headers for API calls
+  
   const getAuthHeaders = () => {
     if (state.token) {
       return {

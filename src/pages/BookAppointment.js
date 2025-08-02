@@ -4,7 +4,7 @@ import { useAppointment } from '../context/AppointmentContext';
 import AppointmentForm from '../components/AppointmentForm';
 import '../styles/BookAppointment.css';
 
-const BACKEND_URL = "https://healthcare-backend-fkpr.onrender.com";
+const BACKEND_URL = "https://healthcare-backend-60uv.onrender.com";
 
 function BookAppointment() {
   const { id } = useParams();
@@ -22,7 +22,7 @@ function BookAppointment() {
     try {
       const response = await fetch(`${BACKEND_URL}/api/doctors/${id}`, {
         method: 'GET',
-        credentials: 'include' // ✅ important for auth cookies
+        credentials: 'include' 
       });
       const data = await response.json();
 
@@ -41,7 +41,7 @@ function BookAppointment() {
     try {
       const response = await fetch(`${BACKEND_URL}/api/appointments`, {
         method: 'POST',
-        credentials: 'include', // ✅ send cookie
+        credentials: 'include', 
         headers: {
           'Content-Type': 'application/json',
         },

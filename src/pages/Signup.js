@@ -25,7 +25,7 @@ function Signup() {
     setSuccess('');
 
     try {
-      const res = await fetch('https://healthcare-backend-fkpr.onrender.com/api/signup', {
+      const res = await fetch('https://healthcare-backend-60uv.onrender.com/api/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
