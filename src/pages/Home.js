@@ -20,7 +20,7 @@ function Home() {
   const navigate = useNavigate();
 
 
-  const BACKEND_URL = "https://healthcare-backend-60uv.onrender.com";
+  const BACKEND_URL = "https://healthcare-backend-rdr4.onrender.com";
 
   useEffect(() => {
     fetchDoctors();

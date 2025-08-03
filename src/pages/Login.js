@@ -16,7 +16,7 @@ function Login() {
     setError('');
 
     try {
-      const res = await fetch('https://healthcare-backend-60uv.onrender.com/api/login', {
+      const res = await fetch('https://healthcare-backend-rdr4.onrender.com/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

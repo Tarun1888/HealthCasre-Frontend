@@ -4,7 +4,7 @@ import { useAppointment } from '../context/AppointmentContext';
 import AppointmentForm from '../components/AppointmentForm';
 import '../styles/BookAppointment.css';
 
-const BACKEND_URL = "https://healthcare-backend-60uv.onrender.com";
+const BACKEND_URL = "https://healthcare-backend-rdr4.onrender.com";
 
 function BookAppointment() {
   const { id } = useParams();
