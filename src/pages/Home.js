@@ -19,20 +19,16 @@ function Home() {
 
   const navigate = useNavigate();
 
-
-  const BACKEND_URL = "https://healthcare-backend-rdr4.onrender.com";
-
   useEffect(() => {
     fetchDoctors();
-     
   }, []);
 
   const fetchDoctors = async (search = '') => {
     setLoading(true);
     try {
       const url = search
-        ? `${BACKEND_URL}/api/doctors?search=${encodeURIComponent(search)}`
-        : `${BACKEND_URL}/api/doctors`;
+        ? `/api/doctors?search=${encodeURIComponent(search)}`
+        : '/api/doctors';
 
       const res = await fetch(url, {
         method: 'GET',
@@ -63,7 +59,7 @@ function Home() {
 
   const handleLogout = async () => {
     try {
-      await fetch(`${BACKEND_URL}/api/logout`, {
+      await fetch('/api/logout', {
         method: 'POST',
         credentials: 'include',
       });
